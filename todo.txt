@@ -1,0 +1,29 @@
+[x] get the embed working. Set it up with zeit url and on my website
+[x] fix the size changing when I edit
+[x] tweak button styles
+[x] smoother transition between edit and non edit
+[x] get copy button working
+[x] display errors
+[x] add keys for perf?
+[x] remove resize handle
+[ ] click to insert command
+[ ] arrow keys and enter to navigate the menu
+[ ] add auto complete filtering
+[ ] fix auto complete closing behaviour
+[ ] lazy load autocomplete items
+[ ] design auto complete
+[ ] add fading buttons
+	[ ] any mouse movement fades in buttons
+	[ ] after 3 second timeout they fade out
+	[ ] hitbox when inside they never fade out
+[ ] add copy link button
+[ ] add useful parameters and conversions
+[ ] add braces and matrices
+[ ] design homepage
+[ ] create landing page
+[ ] minimize bundle size
+[ ] add link to website
+[ ] clean up code
+[ ] play with embedded sizes. Does it work in a variety of envs?
+[ ] submit to embedly
+[ ] download style book go through and review

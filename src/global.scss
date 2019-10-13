@@ -1,0 +1,29 @@
+html, body {
+	height: 100%;
+	font-family: 'Source Sans Pro', sans-serif;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 30px;
+}
+
+.mono {
+	font-family: 'Source Code Pro', monospace;
+}
+
+.fg-2 {
+  flex-grow: 2;
+}
+
+.clickable {
+	transition: opacity 0.1s ease-out;
+  opacity: 1;
+
+	&:hover {
+  	opacity: .7;
+		cursor: pointer;
+	}
+}

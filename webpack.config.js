@@ -4,7 +4,7 @@ module.exports = {
   mode: 'production',
   entry: {
     homepage: './src/homepage.js',
-    editor: './src/editor.js'
+    embed: './src/embed.js'
   },
   module: {
     rules: [
@@ -23,7 +23,15 @@ module.exports = {
 					  },
 				  },
 			  ],
-	    }
+	    },
+			{
+				test: /\.s?css$/,
+				use: [
+					'style-loader',
+					'css-loader',
+					'sass-loader'
+				],
+			}
     ]
   },
   output: {

@@ -1,0 +1,15 @@
+.autocomplete-dropdown {
+	z-index: 100;
+	height: 300px;
+	width: 150px;
+	overflow-y: auto;
+	overflow-x: none;
+	border: 1px solid gray;
+	background-color: white;
+	border-radius: 3px;
+
+	.command-option {
+		padding: 4px;
+		border-bottom: 1px solid gray;
+	}
+}

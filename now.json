@@ -1,6 +1,10 @@
 {
   "routes": [
     { "src": "/", "dest": "/homepage.html" },
-    { "src": "/editor", "dest": "/editor.html" }
+    {
+			"src": "/embed",
+			"dest": "/embed.html",
+			"headers": { "Access-Control-Allow-Origin": "*" }
+		}
   ]
 }
