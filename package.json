@@ -20,6 +20,7 @@
   "devDependencies": {
     "@babel/cli": "^7.6.4",
     "@babel/core": "^7.6.4",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
     "@babel/plugin-transform-react-jsx": "^7.3.0",
     "@babel/preset-env": "^7.6.3",
     "babel-loader": "^8.0.6",
@@ -34,6 +35,9 @@
   "dependencies": {
     "classnames": "^2.2.6",
     "clipboard": "^2.0.4",
+    "fuse.js": "^3.4.5",
+    "lodash.clamp": "^4.0.3",
+    "lodash.debounce": "^4.0.8",
     "lodash.escape": "^4.0.1",
     "preact": "^10.0.0"
   }

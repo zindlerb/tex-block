@@ -1,10 +1,12 @@
-export const updateEquationQueryParam = (equation) => {
+import debounce from 'lodash.debounce';
+
+export const updateEquationQueryParam = debounce((equation) => {
 	if (equation) {
 		history.replaceState(null, null, `${window.location.pathname}?equation=${encodeURI(equation)}`)
 	} else {
 		history.replaceState(null, null, window.location.pathname)
 	}
-}
+}, 500)
 
 export const getEmbedSnippet = (equation) => {
 	return `<iframe title="Tex Block" width="600" height="600" frameBorder="0" src="${window.location.href}"></iframe>`
@@ -54,4 +56,8 @@ export class GlobalClickListener {
 	remove() {
 		window.removeEventListener('click', this._globalClickCallback, this._listenerOptions)
 	}
+}
+
+export const stringSplice = (str, ind, insertionStr) => {
+	return `${str.slice(0, ind)}${insertionStr}${str.slice(ind)}`
 }

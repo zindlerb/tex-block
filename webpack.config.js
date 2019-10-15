@@ -18,7 +18,8 @@ module.exports = {
 	              "@babel/preset-env"
 						  ],
 						  plugins: [
-	              ["@babel/plugin-transform-react-jsx", { "pragma":"h" }]
+	              ["@babel/plugin-transform-react-jsx", { "pragma":"h" }],
+								"@babel/plugin-proposal-class-properties"
 						  ],
 					  },
 				  },

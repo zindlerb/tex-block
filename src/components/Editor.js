@@ -1,6 +1,9 @@
 import { h, render, Component } from 'preact';
 import cx from 'classnames'
-import { updateEquationQueryParam, getCursorPosition, getTextWidth, addPoints, GlobalClickListener } from '../utilities.js'
+import {
+	updateEquationQueryParam, getCursorPosition, getTextWidth,
+	addPoints, GlobalClickListener, stringSplice
+} from '../utilities.js'
 import AutocompleteDropdown from './AutocompleteDropdown.js'
 import './Editor.scss'
 
@@ -9,7 +12,7 @@ class Editor extends Component {
 		super()
 		this.state = {
 			dropdownPosition: null,
-			dropdownSearch: null
+			dropdownCommandStart: null
 		}
 	}
 
@@ -48,41 +51,54 @@ class Editor extends Component {
 		})
 	}
 
-	openDropdown(text, cursorIndex, containerPosition) {
-		this.setState({
-    	dropdownPosition: this.getDropdownPosition(
-				getCursorPosition(text, cursorIndex),
-				containerPosition
-			),
-			dropdownSearch: ''
-		})
+	dropdownCommandEnd(equation, dropdownCommandStart) {
+		return dropdownCommandStart + this.dropdownCommandString(equation, dropdownCommandStart).length
 	}
 
-	updateDropdownSearch(text, cursorPosition) {
-		// find the first unescaped \ to the left
-		let editedCommand;
-		for (var i = cursorPosition; i > 0; i--) {
-			editedCommand = text.slice(i, cursorPosition)
-			if (editedCommand.match(/\[^\]*/)) { // Likely very insufficent for latex grammar.
+	dropdownCommandString(equation, dropdownCommandStart) {
+		const commandMatch = equation.slice(dropdownCommandStart).match(/\\\w*/)
+		return commandMatch ? commandMatch[0] : ''
+	}
+
+	openDropdown({
+  	text,
+		cursorIndex,
+		containerPosition
+	}) {
+		let dropdownCommandStart;
+		for (let i = cursorIndex; i > 0; i--) {
+			dropdownCommandStart = i
+			if (text[i] === '\\') { // Likely very insufficent for tex grammar.
 				break;
 			}
 		}
 
 		this.setState({
-			dropdownSearch: editedCommand
+    	dropdownPosition: this.getDropdownPosition(
+				getCursorPosition(text, cursorIndex),
+				containerPosition
+			),
+			dropdownCommandStart
 		})
 	}
 
 	closeDropdown() {
 		this.setState({
+			dropdownCommandStart: null,
     	dropdownPosition: null,
-			dropdownSearch: null
 		})
 	}
 
+	currentCursorIndex() {
+		return this._textareaEl.selectionEnd
+	}
+
 	render() {
-		const { className, equation, onChange } = this.props
-		const { dropdownPosition, dropdownSearch } = this.state
+		const { className, equation, setEquation } = this.props
+		const {
+			dropdownPosition,
+			dropdownCommandStart,
+		} = this.state
 
 		return [
 			<textarea
@@ -90,33 +106,45 @@ class Editor extends Component {
 				value={equation}
 				ref={el => this._textareaEl = el}
 				onKeyUp={(e) => {
-					/*
-						I really want:
-							while open and there is a change, is the cursor on the command?
-							if not close
-							also:
-								close on escape
-								close on outside click
-
-						trigger for opening is the back slash
-
-					*/
-
 					if (e.keyCode === 220) { // Backslash, aka tex command signifier
-						this.openDropdown(equation, e.target.selectionEnd, e.target.getBoundingClientRect())
-					} else if (e.keyCode === 27 /* esc */ || e.keyCode === 32 /* space */) {
+						this.openDropdown({
+							text: equation,
+							cursorIndex: this.currentCursorIndex(),
+							containerPosition: e.target.getBoundingClientRect(),
+						})
+					} else if (
+						this.isDropdownOpen() && (
+							e.keyCode === 27 /* esc */ ||
+							e.keyCode === 32 /* space */ ||
+							this.currentCursorIndex() <= dropdownCommandStart
+						)
+					) {
 						this.closeDropdown()
 					}
 				}}
 				onInput={(e) => {
 					const value = e.target.value
-					if (this.isDropdownOpen()) {
-						this.updateDropdownSearch(value, e.selectionEnd)
-					}
-         	onChange(value)
+         	setEquation(value)
 				}}
 			/>,
-			this.isDropdownOpen() ? <AutocompleteDropdown {...dropdownPosition} search={dropdownSearch} /> : null
+			this.isDropdownOpen() ? (
+				<AutocompleteDropdown
+					{...dropdownPosition}
+					search={this.dropdownCommandString(equation, dropdownCommandStart)}
+					onSelect={(insertionText) => {
+						this.closeDropdown()
+
+						// remove existing command
+						let splicedEquation = (
+							equation.slice(0, dropdownCommandStart) +
+							equation.slice(this.dropdownCommandEnd(equation, dropdownCommandStart))
+						)
+
+						// insert new command
+						setEquation(stringSplice(splicedEquation, dropdownCommandStart, insertionText))
+					}}
+				/>
+			) : null
 		]
 	}
 }

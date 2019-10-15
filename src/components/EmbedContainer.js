@@ -53,7 +53,7 @@ class EmbedContainer extends Component {
 					<Editor
 						className={cx({ 'is-editing': isEditing })}
 						equation={equation}
-						onChange={(equation) => {
+						setEquation={(equation) => {
 							this.setState({ equation }, () => {
 								updateEquationQueryParam(equation)
 							})

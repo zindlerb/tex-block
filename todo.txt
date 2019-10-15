@@ -6,11 +6,12 @@
 [x] display errors
 [x] add keys for perf?
 [x] remove resize handle
-[ ] click to insert command
+[x] click to insert command
+[x] fix auto complete closing behaviour
+[ ] lazy load autocomplete items
 [ ] arrow keys and enter to navigate the menu
 [ ] add auto complete filtering
-[ ] fix auto complete closing behaviour
-[ ] lazy load autocomplete items
+[ ] fade out and fade in auto complete
 [ ] design auto complete
 [ ] add fading buttons
 	[ ] any mouse movement fades in buttons
