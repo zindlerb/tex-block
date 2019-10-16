@@ -27,10 +27,10 @@
 	[ ] add braces and matrices
 [ ] design homepage
 [ ] create landing page
+[ ] play with embedded sizes. Does it work in a variety of envs?
 [ ] fade out and fade in auto complete
 [ ] minimize bundle size
 [ ] add link to website
 [ ] clean up code
-[ ] play with embedded sizes. Does it work in a variety of envs?
 [ ] submit to embedly
 [ ] download style book go through and review
