@@ -57,9 +57,6 @@ export const LATEX_COMMANDS = [
   	command: '\\zeta'
 	},
 	{
-  	command: '\\o'
-	},
-	{
   	command: '\\varphi'
 	},
 	{

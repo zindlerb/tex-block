@@ -10,19 +10,24 @@
 [x] fix auto complete closing behaviour
 [x] lazy load autocomplete items
 [x] add auto complete filtering
-[ ] arrow keys and enter to navigate the menu
-	[ ] may need to reconfigure how the event listening works
-[ ] fade out and fade in auto complete
-[ ] design auto complete
+[x] changing search needs to reset the selection
+[x] arrow keys and enter to navigate the menu
+	[x] may need to reconfigure how the event listening works
+[x] design auto complete
+[ ] bug entering command on the first line
+	[ ] does not properly replace the slash
 [ ] add fading buttons
+	[ ] show on load then hide
 	[ ] any mouse movement fades in buttons
 	[ ] after 3 second timeout they fade out
 	[ ] hitbox when inside they never fade out
 [ ] add copy link button
-[ ] add useful parameters and conversions
-[ ] add braces and matrices
+[ ] add more commands
+	[ ] add useful parameters and conversions
+	[ ] add braces and matrices
 [ ] design homepage
 [ ] create landing page
+[ ] fade out and fade in auto complete
 [ ] minimize bundle size
 [ ] add link to website
 [ ] clean up code

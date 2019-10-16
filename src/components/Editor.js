@@ -2,8 +2,11 @@ import { h, render, Component } from 'preact';
 import cx from 'classnames'
 import {
 	updateEquationQueryParam, getCursorPosition, getTextWidth,
-	addPoints, GlobalClickListener, stringSplice
+	addPoints, stringSplice
 } from '../utilities.js'
+import {
+	UP_ARROW, DOWN_ARROW, ENTER
+} from '../constants/keycodes.js'
 import AutocompleteDropdown from './AutocompleteDropdown.js'
 import './Editor.scss'
 
@@ -12,21 +15,21 @@ class Editor extends Component {
 		super()
 		this.state = {
 			dropdownPosition: null,
-			dropdownCommandStart: null
+			dropdownCommandStart: null,
+			dropdownSelectedIndex: null
 		}
 	}
 
+	globalOnClick = () => {
+		if (this.isDropdownOpen()) this.closeDropdown()
+	}
+
 	componentDidMount() {
-		this._globalClickListener = new GlobalClickListener({
-			onClick: () => {
-        if (this.isDropdownOpen()) this.closeDropdown()
-			}
-		})
-		this._globalClickListener.add()
+		window.addEventListener('click', this.globalOnClick)
 	}
 
 	componentWillUnmount() {
-		this._globalClickListener.remove()
+		window.removeEventListener('click', this.globalOnClick)
 	}
 
 	isDropdownOpen() {
@@ -78,7 +81,8 @@ class Editor extends Component {
 				getCursorPosition(text, cursorIndex),
 				containerPosition
 			),
-			dropdownCommandStart
+			dropdownCommandStart,
+			dropdownSelectedIndex: null
 		})
 	}
 
@@ -86,6 +90,7 @@ class Editor extends Component {
 		this.setState({
 			dropdownCommandStart: null,
     	dropdownPosition: null,
+			dropdownSelectedIndex: null
 		})
 	}
 
@@ -105,6 +110,13 @@ class Editor extends Component {
 				className={cx("editor mono", className)}
 				value={equation}
 				ref={el => this._textareaEl = el}
+				onKeyDown={(e) => {
+					if (this.isDropdownOpen() && [UP_ARROW, DOWN_ARROW, ENTER].includes(e.keyCode)) {
+						// User is navigating dropdown menu
+						// Prevent browser from moving cursor to beginning of line.
+						e.preventDefault()
+					}
+				}}
 				onKeyUp={(e) => {
 					if (e.keyCode === 220) { // Backslash, aka tex command signifier
 						this.openDropdown({
@@ -112,6 +124,8 @@ class Editor extends Component {
 							cursorIndex: this.currentCursorIndex(),
 							containerPosition: e.target.getBoundingClientRect(),
 						})
+					} else if (this.isDropdownOpen() && [UP_ARROW, DOWN_ARROW, ENTER].includes(e.keyCode)) {
+						e.preventDefault()
 					} else if (
 						this.isDropdownOpen() && (
 							e.keyCode === 27 /* esc */ ||

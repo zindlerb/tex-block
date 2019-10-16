@@ -39,6 +39,7 @@
     "lodash.clamp": "^4.0.3",
     "lodash.debounce": "^4.0.8",
     "lodash.escape": "^4.0.1",
+    "lodash.memoize": "^4.1.2",
     "preact": "^10.0.0"
   }
 }

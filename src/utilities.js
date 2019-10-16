@@ -40,24 +40,6 @@ export const addPoints = (p1, p2) => {
 	}
 }
 
-export class GlobalClickListener {
-	constructor({ onClick, fireOnce = false }) {
-		this._globalClickCallback = onClick
-		this._listenerOptions = {
-			once: fireOnce, // Will delete the event listener after firing
-			capture: false
-		}
-	}
-
-	add() {
-		window.addEventListener('click', this._globalClickCallback, this._listenerOptions)
-	}
-
-	remove() {
-		window.removeEventListener('click', this._globalClickCallback, this._listenerOptions)
-	}
-}
-
 export const stringSplice = (str, ind, insertionStr) => {
 	return `${str.slice(0, ind)}${insertionStr}${str.slice(ind)}`
 }
