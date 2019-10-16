@@ -52,7 +52,7 @@ class CommandOption extends Component {
 		return (
 			<div
 				key={command}
-				className="command-option clickable flex justify-between"
+				className="flex justify-between items-center h-100"
 				onClick={(e) => {
 					onSelect(this.getInsertionText(command, args, infix))
           e.stopPropagation()
@@ -79,7 +79,6 @@ class AutocompleteDropdown extends Component {
 	}
 
 	filterCommands(commands, search) {
-		console.log(search)
 		if (search === '') {
 			return commands
 		} else {
@@ -117,7 +116,7 @@ class AutocompleteDropdown extends Component {
 				{
 					filteredCommands.map((commandOption, ind) => {
        	   	return (
-							<div style={`height: ${LIST_ITEM_HEIGHT}px;`}>
+							<div className="command-option clickable" style={`height: ${LIST_ITEM_HEIGHT}px;`}>
 								{
 									(ind >= paginationStartInd && ind <= paginationEndInd) && (
 										<CommandOption
@@ -136,9 +135,3 @@ class AutocompleteDropdown extends Component {
 }
 
 export default AutocompleteDropdown
-/*
-
-	set of divs all on the dom,
-	they only show their content if they are in view (with buffer)
-
-*/

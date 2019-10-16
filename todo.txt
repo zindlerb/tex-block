@@ -8,9 +8,10 @@
 [x] remove resize handle
 [x] click to insert command
 [x] fix auto complete closing behaviour
-[ ] lazy load autocomplete items
+[x] lazy load autocomplete items
+[x] add auto complete filtering
 [ ] arrow keys and enter to navigate the menu
-[ ] add auto complete filtering
+	[ ] may need to reconfigure how the event listening works
 [ ] fade out and fade in auto complete
 [ ] design auto complete
 [ ] add fading buttons
