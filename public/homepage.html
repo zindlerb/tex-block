@@ -2,14 +2,35 @@
 <html lang="en">
 	<head>
 	  <meta charset="utf-8">
-
+		<link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
+		<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro&display=swap" rel="stylesheet">
 	  <title>Tex Block</title>
 	  <meta name="description" content="Embeddable Latex Editor">
 	  <meta name="author" content="Brian Zindler">
+		<style>
+			html, body {
+				height: 100%;
+			}
+
+			body {
+				font-family: 'Source Sans Pro', sans-serif;
+			}
+
+			.mono {
+				font-family: 'Source Code Pro', monospace;
+			}
+
+			.header-container {
+		    padding: 60px 100px;
+    		background-color: black;
+			}
+		</style>
 	</head>
 
 	<body>
-    <h1>Homepage</h1>
-	  <script src="/homepage.js"></script>
+		<div class="header-container">
+    	<h1 class="b f1 mb2 mt0 white">Tex Block</h1>
+			<h2 class="f3 mv0 white">An Embeddable Tex editor with autocomplete</h2>
+		</div>
 	</body>
 </html>
