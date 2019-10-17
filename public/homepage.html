@@ -10,7 +10,6 @@
 		<style>
 			html, body {
 				height: 100%;
-				background-color: #ebebeb;
 			}
 
 			body {
@@ -43,7 +42,7 @@
 			}
 
 			.embed {
-				border: 4px solid black;
+				border: 2px solid black;
 				border-radius: 6px;
 			}
 		</style>
@@ -53,16 +52,18 @@
 		<div class="header-container">
 			<div class="line"></div>
     	<h1 class="f1 mv1">Tex Block</h1>
-			<h2 class="f3 mv1">An embeddable tex editor with autocomplete</h2>
+			<h2 class="f3 mv1">An embeddable tex editor with command autocomplete</h2>
 		</div>
-		<iframe
-			class="embed mv4"
-			title="Tex Block"
-			width="600"
-			height="500"
-			frameBorder="0"
-			src="/public/embed.html?equation=x*2%20+%206%20=%2020">
-		</iframe>
-		<!-- Note: auto complete dropdown, copy embedding -->
+		<div class="flex">
+			<iframe
+				class="embed mv4"
+				title="Tex Block"
+				width="600"
+				height="500"
+				frameBorder="0"
+				src="/public/embed.html?equation=x*2%20+%206%20=%2020">
+			</iframe>
+		<div>
+		<!-- Note: auto complete dropdown, copy embedding, create a new block here or try it out on the left. -->
 	</body>
 </html>
