@@ -3,7 +3,7 @@
 	<head>
 	  <meta charset="utf-8">
 		<link rel="stylesheet" href="https://unpkg.com/tachyons@4.10.0/css/tachyons.min.css"/>
-		<link href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,700,900&display=swap" rel="stylesheet">
 	  <title>Tex Block</title>
 	  <meta name="description" content="Embeddable Latex Editor">
 	  <meta name="author" content="Brian Zindler">
@@ -14,6 +14,9 @@
 
 			body {
 				font-family: 'Source Sans Pro', sans-serif;
+				max-width: 900px;
+				width: 100%;
+				margin: auto;
 			}
 
 			.mono {
@@ -24,13 +27,26 @@
 		    padding: 60px 100px;
     		background-color: black;
 			}
+
+			.line {
+				height: 8px;
+				width: 100%;
+				background-color: black;
+			}
+
+			.black-fw {
+				font-weight: 900
+			}
+
+			.mont {
+				font-family: 'Montserrat', sans-serif;
+			}
 		</style>
 	</head>
 
-	<body>
-		<div class="header-container">
-    	<h1 class="b f1 mb2 mt0 white">Tex Block</h1>
-			<h2 class="f3 mv0 white">An Embeddable Tex editor with autocomplete</h2>
-		</div>
+	<body class="ph3">
+		<div class="line mt4"></div>
+    <h1 class="f2 mb2 mt2">tex block</h1>
+		<h2 class="f4 mv0">an embeddable tex editor with autocomplete</h2>
 	</body>
 </html>
