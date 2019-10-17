@@ -3,9 +3,11 @@
 	transition: height 0.3s ease-out, opacity 0.3s ease-out;
 	opacity: 0;
 	border-radius: 3px;
-	border-color: #CECECE;
+	border-color: black;
+	border-width: 2px;
 	height: 0px;
 	resize: none;
+	background-color: transparent;
 
 	&.is-editing {
 		opacity: 100;
@@ -13,6 +15,6 @@
 	}
 
 	&:focus {
-		outline:0;
+		outline: 0;
 	}
 }

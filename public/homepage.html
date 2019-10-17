@@ -10,13 +10,13 @@
 		<style>
 			html, body {
 				height: 100%;
+				background-color: #ebebeb;
 			}
 
 			body {
 				font-family: 'Source Sans Pro', sans-serif;
-				max-width: 900px;
 				width: 100%;
-				margin: auto;
+				padding: 60px 100px;
 			}
 
 			.mono {
@@ -24,13 +24,13 @@
 			}
 
 			.header-container {
-		    padding: 60px 100px;
-    		background-color: black;
 			}
 
 			.line {
-				height: 8px;
+				min-width: 300px;
+				max-width: 600px;
 				width: 100%;
+				height: 5px;
 				background-color: black;
 			}
 
@@ -41,12 +41,28 @@
 			.mont {
 				font-family: 'Montserrat', sans-serif;
 			}
+
+			.embed {
+				border: 4px solid black;
+				border-radius: 6px;
+			}
 		</style>
 	</head>
 
-	<body class="ph3">
-		<div class="line mt4"></div>
-    <h1 class="f2 mb2 mt2">tex block</h1>
-		<h2 class="f4 mv0">an embeddable tex editor with autocomplete</h2>
+	<body>
+		<div class="header-container">
+			<div class="line"></div>
+    	<h1 class="f1 mv1">Tex Block</h1>
+			<h2 class="f3 mv1">An embeddable tex editor with autocomplete</h2>
+		</div>
+		<iframe
+			class="embed mv4"
+			title="Tex Block"
+			width="600"
+			height="500"
+			frameBorder="0"
+			src="/public/embed.html?equation=x*2%20+%206%20=%2020">
+		</iframe>
+		<!-- Note: auto complete dropdown, copy embedding -->
 	</body>
 </html>
