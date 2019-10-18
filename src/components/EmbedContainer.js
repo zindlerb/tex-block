@@ -97,10 +97,12 @@ class EmbedContainer extends Component {
 							})
 						}}
 					/>
-					<KatexRenderer
-						className="flex-auto flex justify-center items-center f3"
-						text={equation}
-					/>
+					<div className={cx('flex-auto', { relative: isEditing })}>
+						<KatexRenderer
+							className="abs-center f3"
+							text={equation}
+						/>
+					</div>
 				</div>
       </div>
     )

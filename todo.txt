@@ -19,9 +19,9 @@
 	[x] any mouse movement fades in buttons
 	[x] after 3 second timeout they fade out
 	[x] hitbox when inside they never fade out
-[ ] screen record embedding example inside a blog post
-	[ ] on color background and not
-[ ] does not wrap from bottom when navigating with the arrow keys
+[x] screen record embedding example inside a blog post
+	[x] on color background and not
+[x] does not wrap from bottom when navigating with the arrow keys
 [ ] when not editing the text should be in the center of the container
 [ ] bug entering command on the first line
 	[ ] does not properly replace the slash
