@@ -25,6 +25,12 @@
 [ ] when not editing the text should be in the center of the container
 [ ] bug entering command on the first line
 	[ ] does not properly replace the slash
+[ ] going to the right of search does not close it
+[ ] bug transitioning from edit can get it stuck in the buttons state. On close need to trigger a fade out
+[ ] many bugs of the text not fading out
+	[ ] could set interval to hide it...
+		[ ] store displayTimestamp
+		[ ] check it against that every half second
 [ ] add copy link button
 [ ] add more commands
 	[ ] add useful parameters and conversions
