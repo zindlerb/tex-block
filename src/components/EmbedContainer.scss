@@ -8,6 +8,15 @@
 
 	height: 100%;
 
+	.button-container {
+		transition: opacity 0.3s ease-out;
+		opacity: 1;
+
+		&.hidden {
+			opacity: 0;
+		}
+	}
+
 	button {
 		font-weight: 700;
 		padding: 6px 14px;

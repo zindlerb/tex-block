@@ -141,7 +141,7 @@ class AutocompleteDropdown extends Component {
 			if (selectedIndex === null) {
 				this.highlightCommand(0)
 			} else if ((selectedIndex + 1) > this.filterCommands().length) {
-				this.highlightCommand(this.filterCommands().length - 1)
+				this.highlightCommand(0)
 			} else {
 				this.highlightCommand(selectedIndex + 1)
 			}

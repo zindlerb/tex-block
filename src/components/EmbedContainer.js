@@ -1,3 +1,4 @@
+import debounce from 'lodash.debounce';
 import { h, render, Component } from 'preact';
 import cx from 'classnames';
 import CopyButton from './CopyButton.js'
@@ -11,11 +12,40 @@ class EmbedContainer extends Component {
 		super()
 		this.state = {
 			equation: 'x*2 + 6 = 20',
-			isEditing: false
+			isEditing: false,
+			showButtons: true
 		}
+		this._buttonTimeoutId = null
 	}
 
 	componentDidMount() {
+		this.displayButtons({ fadeOut: true, timeoutLength: 3500 })
+		this.syncEquationStateAndQueryParams()
+	}
+
+	displayButtons = ({ fadeOut, timeoutLength = 1300 }) => {
+		const { isEditing, showButtons } = this.state
+
+		if (isEditing) return;
+		if (!showButtons) this.setState({ showButtons: true })
+
+		if (this._buttonTimeoutId) {
+			clearTimeout(this._buttonTimeoutId)
+			this._buttonTimeoutId = null
+		}
+
+		if (fadeOut) {
+			this._buttonTimeoutId = this.setFadeTimeout(timeoutLength)
+		}
+	}
+
+	setFadeTimeout = (timeoutLength) => {
+		return setTimeout(() => {
+			this.setState({ showButtons: false })
+		}, timeoutLength)
+	}
+
+	syncEquationStateAndQueryParams() {
 		let queryParams = decodeURI(window.location.search)
 
 		if (!queryParams) {
@@ -33,13 +63,21 @@ class EmbedContainer extends Component {
 	}
 
   render() {
-		const { equation, isEditing } = this.state
+		const { equation, isEditing, showButtons } = this.state
     return (
-      <div className="embed-container flex flex-column">
-				<div className="mb3 flex justify-end">
+      <div
+				className="embed-container flex flex-column"
+				onMouseMove={() => !isEditing && this.displayButtons({ fadeOut: true })}>
+				<div
+					className={cx('button-container mb3 flex justify-end', { hidden: !isEditing && !showButtons })}
+					onMouseEnter={() => !isEditing && this.displayButtons({ fadeOut: false })}
+					onMouseMove={(e) => e.stopPropagation()}
+				>
 					<button
 						className="clickable sans mr2"
-						onClick={() => this.setState({ isEditing: !isEditing })}
+						onClick={() => {
+             	this.setState({ isEditing: !isEditing })
+						}}
 					>
 						{isEditing ? 'Done' : 'Edit'}
 					</button>
