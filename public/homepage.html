@@ -15,7 +15,7 @@
 			body {
 				font-family: 'Source Sans Pro', sans-serif;
 				width: 100%;
-				padding: 60px 100px;
+				padding: 60px;
 			}
 
 			.mono {
@@ -41,7 +41,7 @@
 				font-family: 'Montserrat', sans-serif;
 			}
 
-			.embed {
+			.bold-border {
 				border: 2px solid black;
 				border-radius: 6px;
 			}
@@ -55,34 +55,45 @@
       }
 
 			.dropdown-gif {
-				border: 2px solid black;
 				width: 120px;
+			}
+
+			.embedding-example {
+				width: 250px;
+			}
+
+			.information-container {
+				width: 400px;
 			}
 		</style>
 	</head>
 
 	<body>
-		<div class="header-container">
-			<div class="line"></div>
-    	<h1 class="f1 mv1">Tex Block</h1>
-			<h2 class="f3 mv1">
-        An embeddable <a href="https://en.wikipedia.org/wiki/TeX">TeX</a> editor with command autocomplete
-      </h2>
-		</div>
-		<div class="flex justify-between">
-			<iframe
-				class="embed mv4"
-				title="Tex Block"
-				width="600"
-				height="500"
-				frameBorder="0"
-				src="/embed">
-			</iframe>
-      <div>
-        <h3>Filterable Command Dropdown</h3>
-				<img class="dropdown-gif" src="/dropdown.gif"></img>
-        <h3>Responsive Embedding</h3>
-        <h3>Use the distraction free editor <a href="/embed">here</a> or try it out on your left.</h3>
+		<div class="flex justify-between flex-wrap">
+			<div>
+				<div class="header-container">
+					<div class="line"></div>
+		    	<h1 class="f1 mv1">TeX Block</h1>
+					<h2 class="f3 mv1">
+		        An embeddable <a href="https://en.wikipedia.org/wiki/TeX">TeX</a> editor with command autocomplete
+		      </h2>
+				</div>
+				<iframe
+					class="bold-border mt4 mb2"
+					title="Tex Block"
+					width="600"
+					height="500"
+					frameBorder="0"
+					src="/embed">
+				</iframe>
+				<div class="f4">By <a href="http://www.zindlerb.com">Brian Zindler</a></div>
+			</div>
+      <div class="information-container">
+        <h3 class="f3">Filterable Command Dropdown</h3>
+				<img class="dropdown-gif bold-border" src="/dropdown.gif"></img>
+        <h3 class="f3">Responsive Embedding</h3>
+				<img class="embedding-example bold-border" src="/embed-example.png"></img>
+        <h3 class="f3">Use the distraction free editor <a href="/embed">here</a> or try it out on your left.</h3>
       </div>
 		<div>
 		<!-- Note: auto complete dropdown, copy embedding, create a new block here or try it out on the left. -->
