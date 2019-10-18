@@ -14,23 +14,28 @@
 [x] arrow keys and enter to navigate the menu
 	[x] may need to reconfigure how the event listening works
 [x] design auto complete
-[ ] bug entering command on the first line
-	[ ] does not properly replace the slash
 [ ] add fading buttons
 	[ ] show on load then hide
 	[ ] any mouse movement fades in buttons
 	[ ] after 3 second timeout they fade out
 	[ ] hitbox when inside they never fade out
+[ ] screen record embedding example inside a blog post
+	[ ] on color background and not
+[ ] does not wrap from bottom when navigating with the arrow keys
+[ ] when not editing the text should be in the center of the container
+[ ] bug entering command on the first line
+	[ ] does not properly replace the slash
+
 [ ] add copy link button
 [ ] add more commands
 	[ ] add useful parameters and conversions
 	[ ] add braces and matrices
-[ ] design homepage
+[x] design homepage
 [ ] create landing page
 [ ] play with embedded sizes. Does it work in a variety of envs?
-[ ] fade out and fade in auto complete
-[ ] minimize bundle size
 [ ] add link to website
+[ ] minimize bundle size
+
 [ ] clean up code
 [ ] submit to embedly
 [ ] download style book go through and review

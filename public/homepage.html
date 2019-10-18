@@ -45,6 +45,19 @@
 				border: 2px solid black;
 				border-radius: 6px;
 			}
+
+      a {
+        color: black;
+      }
+
+      a:hover {
+				opacity: .7;
+      }
+
+			.dropdown-gif {
+				border: 2px solid black;
+				width: 120px;
+			}
 		</style>
 	</head>
 
@@ -52,9 +65,11 @@
 		<div class="header-container">
 			<div class="line"></div>
     	<h1 class="f1 mv1">Tex Block</h1>
-			<h2 class="f3 mv1">An embeddable tex editor with command autocomplete</h2>
+			<h2 class="f3 mv1">
+        An embeddable <a href="https://en.wikipedia.org/wiki/TeX">TeX</a> editor with command autocomplete
+      </h2>
 		</div>
-		<div class="flex">
+		<div class="flex justify-between">
 			<iframe
 				class="embed mv4"
 				title="Tex Block"
@@ -63,6 +78,12 @@
 				frameBorder="0"
 				src="/public/embed.html?equation=x*2%20+%206%20=%2020">
 			</iframe>
+      <div>
+        <h3>Filterable Command Dropdown</h3>
+				<img class="dropdown-gif" src="/public/dropdown.gif"></img>
+        <h3>Responsive Embedding</h3>
+        <h3>Use the distraction free editor <a href="/embed">here</a> or try it out on your left.</h3>
+      </div>
 		<div>
 		<!-- Note: auto complete dropdown, copy embedding, create a new block here or try it out on the left. -->
 	</body>
