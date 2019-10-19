@@ -34,19 +34,12 @@ class EmbedContainer extends Component {
 	}
 
 	syncEquationStateAndQueryParams() {
-		let queryParams = decodeURI(window.location.search)
-
-		if (!queryParams) {
-			updateEquationQueryParam(this.state.equation)
+		const path = window.location.pathname
+		const equationMatch = path.match(/\embed\/(.*)/)
+		if (equationMatch) {
+			this.setState({ equation: decodeURIComponent(equationMatch[1]) })
 		} else {
-			queryParams = queryParams.slice(1) // remove the ?
-			const equationParam = queryParams.split('&').find((param) => param.match(/^equation=/))
-
-			if (equationParam) {
-				this.setState({ equation: equationParam.replace(/^equation=/, '') })
-			} else {
-				updateEquationQueryParam(this.state.equation)
-			}
+			updateEquationQueryParam(this.state.equation)
 		}
 	}
 

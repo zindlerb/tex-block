@@ -39,7 +39,11 @@
 [x] make the expanding and shrinking smoother
 [x] play with embedded sizes. Does it work in a variety of envs?
 [x] favicon and logo
+[x] make it work on mobile
 [ ] make sure it complies with that embed specification
+	need /oembed route to return json
+	may need to put the /embed data in the url
+	add copy link that is the oembed link
 [ ] submit to embedly
 [ ] minimize bundle size
 [ ] clean up code

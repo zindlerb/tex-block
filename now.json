@@ -2,7 +2,7 @@
   "routes": [
     { "src": "/", "dest": "/homepage.html" },
     {
-			"src": "/embed",
+			"src": "/embed(/.*)?",
 			"dest": "/embed.html",
 			"headers": { "Access-Control-Allow-Origin": "*" }
 		}

@@ -2,9 +2,9 @@ import debounce from 'lodash.debounce';
 
 export const updateEquationQueryParam = debounce((equation) => {
 	if (equation) {
-		history.replaceState(null, null, `${window.location.pathname}?equation=${encodeURI(equation)}`)
+		history.replaceState(null, null, `/embed/${encodeURIComponent(equation)}`)
 	} else {
-		history.replaceState(null, null, window.location.pathname)
+		history.replaceState(null, null, `/embed`)
 	}
 }, 500)
 
