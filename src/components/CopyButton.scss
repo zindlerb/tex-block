@@ -1,25 +1,25 @@
 .copy-button {
-	position: relative;
+  position: relative;
 
-	.copied-signifier {
-  	display: none;
-	}
+  .copied-signifier {
+    display: none;
+  }
 
-	&.copying {
-		.copied-signifier {
-  		display: unset;
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			transform: translate(-50%,-50%);
-		}
+  &.copying {
+    .copied-signifier {
+      display: unset;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+    }
 
-		.text {
-    	visibility: hidden;
-		}
-	}
+    .text {
+      visibility: hidden;
+    }
+  }
 
-	button {
-		transition: width 0.2s ease-out;
-	}
+  button {
+    transition: width 0.2s ease-out;
+  }
 }

@@ -1,32 +1,32 @@
 .embed-container {
-	flex: 1 1 auto;
-	max-width: 750px;
-	min-width: 300px;
+  flex: 1 1 auto;
+  max-width: 750px;
+  min-width: 300px;
 
-	min-height: 200px;
-	max-height: 500px;
+  min-height: 200px;
+  max-height: 500px;
 
-	height: 100%;
+  height: 100%;
 
-	.button-container {
-		transition: opacity 0.3s ease-out;
-		opacity: 1;
+  .button-container {
+    transition: opacity 0.3s ease-out;
+    opacity: 1;
 
-		&.hidden {
-			opacity: 0;
-		}
-	}
+    &.hidden {
+      opacity: 0;
+    }
+  }
 
-	button {
-		font-weight: 700;
-		padding: 6px 14px;
-		border: 0;
-		background-color: transparent;
-		border: 2px solid black;
-		border-radius: 3px;
-	}
+  button {
+    font-weight: 700;
+    padding: 6px 14px;
+    border: 0;
+    background-color: transparent;
+    border: 2px solid black;
+    border-radius: 3px;
+  }
 
-	button:focus {
-		outline:0;
-	}
+  button:focus {
+    outline:0;
+  }
 }

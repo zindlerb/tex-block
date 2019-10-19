@@ -9,30 +9,30 @@ module.exports = {
   module: {
     rules: [
       {
-			  test: /\.js$/,
-			  use: [
-				  {
-					  loader: 'babel-loader',
-					  query: {
-						  presets: [
-	              "@babel/preset-env"
-						  ],
-						  plugins: [
-	              ["@babel/plugin-transform-react-jsx", { "pragma":"h" }],
-								"@babel/plugin-proposal-class-properties"
-						  ],
-					  },
-				  },
-			  ],
-	    },
-			{
-				test: /\.s?css$/,
-				use: [
-					'style-loader',
-					'css-loader',
-					'sass-loader'
-				],
-			}
+        test: /\.js$/,
+        use: [
+          {
+            loader: 'babel-loader',
+            query: {
+              presets: [
+                "@babel/preset-env"
+              ],
+              plugins: [
+                ["@babel/plugin-transform-react-jsx", { "pragma":"h" }],
+                "@babel/plugin-proposal-class-properties"
+              ],
+            },
+          },
+        ],
+      },
+      {
+        test: /\.s?css$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ],
+      }
     ]
   },
   output: {

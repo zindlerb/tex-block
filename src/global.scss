@@ -1,17 +1,17 @@
 html, body {
-	height: 100%;
-	font-family: 'Source Sans Pro', sans-serif;
+  height: 100%;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 body {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
 }
 
 .mono {
-	font-family: 'Source Code Pro', monospace;
+  font-family: 'Source Code Pro', monospace;
 }
 
 .fg-2 {
@@ -19,18 +19,18 @@ body {
 }
 
 .clickable {
-	transition: opacity 0.1s ease-out;
+  transition: opacity 0.1s ease-out;
   opacity: 1;
 
-	&:hover {
-  	opacity: .7;
-		cursor: pointer;
-	}
+  &:hover {
+    opacity: .7;
+    cursor: pointer;
+  }
 }
 
 .abs-center {
   position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%,-50%);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
 }
