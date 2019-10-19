@@ -11,38 +11,26 @@ class EmbedContainer extends Component {
 	constructor() {
 		super()
 		this.state = {
-			equation: 'x*2 + 6 = 20',
+			equation: 'x*2 + 8 = 20',
 			isEditing: false,
-			showButtons: true
+			buttonsShownTimestamp: new Date()
 		}
-		this._buttonTimeoutId = null
+		this._buttonHideIntervalId = null
 	}
 
 	componentDidMount() {
-		this.displayButtons({ fadeOut: true, timeoutLength: 3500 })
+		this._buttonHideIntervalId = setInterval(() => {
+			const { isEditing, buttonsShownTimestamp } = this.state
+			if (isEditing || !buttonsShownTimestamp) return;
+			const millisSinceButtonsShown = (new Date() - buttonsShownTimestamp)
+			if (millisSinceButtonsShown > 5000) this.setState({ buttonsShownTimestamp: null })
+		}, 1000/10)
+
 		this.syncEquationStateAndQueryParams()
 	}
 
-	displayButtons = ({ fadeOut, timeoutLength = 1300 }) => {
-		const { isEditing, showButtons } = this.state
-
-		if (isEditing) return;
-		if (!showButtons) this.setState({ showButtons: true })
-
-		if (this._buttonTimeoutId) {
-			clearTimeout(this._buttonTimeoutId)
-			this._buttonTimeoutId = null
-		}
-
-		if (fadeOut) {
-			this._buttonTimeoutId = this.setFadeTimeout(timeoutLength)
-		}
-	}
-
-	setFadeTimeout = (timeoutLength) => {
-		return setTimeout(() => {
-			this.setState({ showButtons: false })
-		}, timeoutLength)
+	componentWillUnmount() {
+  	clearInterval(this._buttonHideIntervalId)
 	}
 
 	syncEquationStateAndQueryParams() {
@@ -63,20 +51,19 @@ class EmbedContainer extends Component {
 	}
 
   render() {
-		const { equation, isEditing, showButtons } = this.state
+		const { equation, isEditing, buttonsShownTimestamp } = this.state
+		const shouldShowButtons = buttonsShownTimestamp
     return (
       <div
 				className="embed-container flex flex-column"
-				onMouseMove={() => !isEditing && this.displayButtons({ fadeOut: true })}>
+				onMouseMove={() => !shouldShowButtons && this.setState({ buttonsShownTimestamp: new Date() })}>
 				<div
-					className={cx('button-container mb3 flex justify-end', { hidden: !isEditing && !showButtons })}
-					onMouseEnter={() => !isEditing && this.displayButtons({ fadeOut: false })}
-					onMouseMove={(e) => e.stopPropagation()}
+					className={cx('button-container mb3 flex justify-end', { hidden: !shouldShowButtons })}
 				>
 					<button
 						className="clickable sans mr2"
 						onClick={() => {
-             	this.setState({ isEditing: !isEditing })
+             	this.setState({ isEditing: !isEditing, buttonsShownTimestamp: new Date() })
 						}}
 					>
 						{isEditing ? 'Done' : 'Edit'}

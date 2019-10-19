@@ -692,5 +692,5 @@ export const LATEX_COMMANDS = [
   	command: '\\brack',
 		args: ['top', 'bottom'],
 		example: '{n+1\\brack 3}'
-	}
+	},
 ]

@@ -29,13 +29,13 @@
 [x] bug entering command on the first line
 	[x] does not properly replace the slash
 [x] going to the right of search does not close it
-[ ] many bugs of the text not fading out
-	[ ] could set interval to hide it...
-		[ ] store displayTimestamp
-		[ ] check it against that every half second
-[ ] add more commands
-	[ ] add useful parameters and conversions
-	[ ] add braces and matrices
+[x] many bugs of the text not fading out
+	[x] could set interval to hide it...
+		[x] store displayTimestamp
+		[x] check it against that every half second
+[x] add more commands
+	[x] add useful parameters and conversions
+	[x] add braces and matrices
 [ ] make the expanding and shrinking smoother
 [ ] minimize bundle size
 [ ] play with embedded sizes. Does it work in a variety of envs?
