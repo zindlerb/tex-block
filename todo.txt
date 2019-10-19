@@ -22,25 +22,24 @@
 [x] screen record embedding example inside a blog post
 	[x] on color background and not
 [x] does not wrap from bottom when navigating with the arrow keys
-[ ] when not editing the text should be in the center of the container
-[ ] bug entering command on the first line
-	[ ] does not properly replace the slash
-[ ] going to the right of search does not close it
-[ ] bug transitioning from edit can get it stuck in the buttons state. On close need to trigger a fade out
+[x] design homepage
+[x] create landing page
+[x] add link to website
+[x] when not editing the text should be in the center of the container
+[x] bug entering command on the first line
+	[x] does not properly replace the slash
+[x] going to the right of search does not close it
 [ ] many bugs of the text not fading out
 	[ ] could set interval to hide it...
 		[ ] store displayTimestamp
 		[ ] check it against that every half second
-[ ] add copy link button
 [ ] add more commands
 	[ ] add useful parameters and conversions
 	[ ] add braces and matrices
-[x] design homepage
-[ ] create landing page
-[ ] play with embedded sizes. Does it work in a variety of envs?
-[ ] add link to website
+[ ] make the expanding and shrinking smoother
 [ ] minimize bundle size
-
+[ ] play with embedded sizes. Does it work in a variety of envs?
+[ ] favicon and logo
+[ ] make sure it complies with that embed specification
 [ ] clean up code
 [ ] submit to embedly
-[ ] download style book go through and review

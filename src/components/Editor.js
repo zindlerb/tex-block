@@ -69,7 +69,7 @@ class Editor extends Component {
 		containerPosition
 	}) {
 		let dropdownCommandStart;
-		for (let i = cursorIndex; i > 0; i--) {
+		for (let i = cursorIndex; i >= 0; i--) {
 			dropdownCommandStart = i
 			if (text[i] === '\\') { // Likely very insufficent for tex grammar.
 				break;
@@ -130,7 +130,8 @@ class Editor extends Component {
 						this.isDropdownOpen() && (
 							e.keyCode === 27 /* esc */ ||
 							e.keyCode === 32 /* space */ ||
-							this.currentCursorIndex() <= dropdownCommandStart
+							this.currentCursorIndex() <= dropdownCommandStart ||
+							this.currentCursorIndex() > this.dropdownCommandEnd(equation, dropdownCommandStart)
 						)
 					) {
 						this.closeDropdown()
