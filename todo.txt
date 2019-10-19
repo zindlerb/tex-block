@@ -36,10 +36,12 @@
 [x] add more commands
 	[x] add useful parameters and conversions
 	[x] add braces and matrices
-[ ] make the expanding and shrinking smoother
-[ ] minimize bundle size
-[ ] play with embedded sizes. Does it work in a variety of envs?
-[ ] favicon and logo
+[x] make the expanding and shrinking smoother
+[x] play with embedded sizes. Does it work in a variety of envs?
+[x] favicon and logo
 [ ] make sure it complies with that embed specification
-[ ] clean up code
 [ ] submit to embedly
+[ ] minimize bundle size
+[ ] clean up code
+	[ ] swap out char codes
+	[ ] prune imports

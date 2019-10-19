@@ -58,12 +58,15 @@ class EmbedContainer extends Component {
 				className="embed-container flex flex-column"
 				onMouseMove={() => !shouldShowButtons && this.setState({ buttonsShownTimestamp: new Date() })}>
 				<div
-					className={cx('button-container mb3 flex justify-end', { hidden: !shouldShowButtons })}
+					className={cx('button-container flex justify-end', { hidden: !shouldShowButtons })}
 				>
 					<button
 						className="clickable sans mr2"
 						onClick={() => {
-             	this.setState({ isEditing: !isEditing, buttonsShownTimestamp: new Date() })
+             	this.setState({
+								isEditing: !isEditing,
+								buttonsShownTimestamp: new Date() // Reset timestamp so buttons don't fade after editing.
+							})
 						}}
 					>
 						{isEditing ? 'Done' : 'Edit'}
@@ -84,7 +87,7 @@ class EmbedContainer extends Component {
 							})
 						}}
 					/>
-					<div className={cx('flex-auto', { relative: isEditing })}>
+					<div className={cx('flex-auto relative')}>
 						<KatexRenderer
 							className="abs-center f3"
 							text={equation}
