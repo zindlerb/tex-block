@@ -18,8 +18,6 @@ const filterCommands = memoize((search) => {
 
 const ArgPlaceholder = ({ children }) => <span className="gray">{children}</span>
 
-// MEMOIZE FILTER COMMANDS FOR PERFORMANCE?
-
 class CommandOption extends Component {
   commandDisplay(command, args, infix) {
     if (infix) {
