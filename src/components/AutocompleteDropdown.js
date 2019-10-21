@@ -78,7 +78,6 @@ class CommandOption extends Component {
 }
 
 const LIST_ITEM_HEIGHT = 30
-const SCROLL_VIEWPORT_HEIGHT = 300;
 
 class AutocompleteDropdown extends Component {
   constructor(props) {
@@ -103,16 +102,16 @@ class AutocompleteDropdown extends Component {
     if (position === 'top') {
       this._scrollContainer.scrollTo(0, LIST_ITEM_HEIGHT * commandIndex)
     } else if (position === 'bottom') {
-      const commandsInViewport = SCROLL_VIEWPORT_HEIGHT / LIST_ITEM_HEIGHT
+      const commandsInViewport = this.state.dropdownHeight / LIST_ITEM_HEIGHT
       this._scrollContainer.scrollTo(0, LIST_ITEM_HEIGHT * ((commandIndex + 1) - commandsInViewport))
     }
   }
 
   highlightCommand(index) {
-    const { scrollTop } = this.state
+    const { scrollTop, dropdownHeight } = this.state
     const commandsInView = {
       startInd: Math.round(scrollTop / LIST_ITEM_HEIGHT),
-      endInd: Math.round(scrollTop / LIST_ITEM_HEIGHT) + (SCROLL_VIEWPORT_HEIGHT/LIST_ITEM_HEIGHT)
+      endInd: Math.round(scrollTop / LIST_ITEM_HEIGHT) + (dropdownHeight/LIST_ITEM_HEIGHT)
     }
 
     this.setState({
@@ -172,7 +171,7 @@ class AutocompleteDropdown extends Component {
 
   paginationIndices(commands) {
     const startInd = Math.floor(this.state.scrollTop / LIST_ITEM_HEIGHT)
-    const endInd = Math.ceil(startInd + (SCROLL_VIEWPORT_HEIGHT / LIST_ITEM_HEIGHT))
+    const endInd = Math.ceil(startInd + (this.state.dropdownHeight / LIST_ITEM_HEIGHT))
     const padding = 3
 
     return [
