@@ -3,7 +3,6 @@ const path = require('path');
 module.exports = {
   mode: 'production',
   entry: {
-    homepage: './src/homepage.js',
     embed: './src/embed.js'
   },
   module: {

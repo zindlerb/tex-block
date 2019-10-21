@@ -1,0 +1,31 @@
+.saved-indicator {
+  font-weight: 700;
+  position: relative;
+
+  .tooltip {
+    display: none;
+    font-weight: normal;
+    border-radius: 3px;
+    position: absolute;
+    top: 150%;
+    right: 0px;
+    width: 300px;
+    padding: 8px;
+    background: white;
+    border: 2px solid black;
+  }
+
+  &:hover {
+    .tooltip {
+      display: block;
+    }
+  }
+
+  .saved-text {
+    margin-right: 6px;
+  }
+
+  i.fas {
+    font-size: 15px;
+  }
+}

@@ -8,6 +8,13 @@
 
   height: 100%;
 
+  padding: 16px;
+
+  &.notion {
+    // To avoid notion's top left toolbar
+    padding-top: 32px;
+  }
+
   .button-container {
     transition: opacity 0.3s ease-out;
     opacity: 1;
@@ -19,7 +26,8 @@
 
   button {
     font-weight: 700;
-    padding: 6px 14px;
+    font-size: 16px;
+    padding: 4px 12px;
     border: 0;
     background-color: transparent;
     border: 2px solid black;

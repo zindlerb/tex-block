@@ -4,7 +4,10 @@ import cx from 'classnames';
 import CopyButton from './CopyButton.js'
 import KatexRenderer from './KatexRenderer.js'
 import Editor from './Editor.js'
-import { updateEquationQueryParam, getEmbedSnippet } from '../utilities.js'
+import SavedIndicator from './SavedIndicator.js'
+import {
+  updateEquationQueryParam, getCopySnippet, getEmbedSnippet, getBrowserUrl
+} from '../utilities.js'
 import './EmbedContainer.scss'
 
 class EmbedContainer extends Component {
@@ -13,7 +16,9 @@ class EmbedContainer extends Component {
     this.state = {
       equation: 'x*2 + 8 = 20',
       isEditing: false,
-      buttonsShownTimestamp: new Date()
+      buttonsShownTimestamp: new Date(),
+      equationOnPageLoad: null,
+      notionStyles: !!getBrowserUrl().match(/notion/) || getBrowserUrl() === ''
     }
     this._buttonHideIntervalId = null
   }
@@ -23,7 +28,7 @@ class EmbedContainer extends Component {
       const { isEditing, buttonsShownTimestamp } = this.state
       if (isEditing || !buttonsShownTimestamp) return;
       const millisSinceButtonsShown = (new Date() - buttonsShownTimestamp)
-      if (millisSinceButtonsShown > 5000) this.setState({ buttonsShownTimestamp: null })
+      if (millisSinceButtonsShown > 3500) this.setState({ buttonsShownTimestamp: null })
     }, 1000/10)
 
     this.syncEquationStateAndQueryParams()
@@ -37,24 +42,51 @@ class EmbedContainer extends Component {
     const path = window.location.pathname
     const equationMatch = path.match(/\embed\/(.*)/)
     if (equationMatch) {
-      this.setState({ equation: decodeURIComponent(equationMatch[1]) })
+      const urlEquation = decodeURIComponent(equationMatch[1])
+      this.setState({
+        equation: urlEquation,
+        equationOnPageLoad: urlEquation
+      })
     } else {
       updateEquationQueryParam(this.state.equation)
+      this.setState({ equationOnPageLoad: this.state.equation })
     }
   }
 
+  isEmbedded() {
+    return location.host !== 'texblocks' || !location.pathname.math(/^\/embed/)
+  }
+
   render() {
-    const { equation, isEditing, buttonsShownTimestamp } = this.state
+    const { equation, isEditing, buttonsShownTimestamp, equationOnPageLoad, notionStyles, lockButtonDisplay } = this.state
     const shouldShowButtons = buttonsShownTimestamp
+
     return (
       <div
-        className="embed-container flex flex-column"
+        className={cx("embed-container flex flex-column", { notion: notionStyles })}
         onMouseMove={() => !shouldShowButtons && this.setState({ buttonsShownTimestamp: new Date() })}>
         <div
-          className={cx('button-container flex justify-end', { hidden: !shouldShowButtons })}
+          className={cx("button-container flex items-center justify-between", { hidden: !shouldShowButtons && !lockButtonDisplay })}
+          onMouseEnter={() => this.setState({ lockButtonDisplay: true })}
+          onMouseLeave={() => this.setState({ lockButtonDisplay: false })}
         >
-          <button
+          <div className="flex items-center">
+           <span className="dib mr2">Copy:</span>
+          <CopyButton
             className="clickable sans mr2"
+            copyableText={getCopySnippet()}>
+            Link
+          </CopyButton>
+           <CopyButton
+            className="clickable sans"
+            copyableText={getEmbedSnippet()}>
+            Iframe
+          </CopyButton>
+          </div>
+          <div className="flex items-center">
+           {this.isEmbedded() && <SavedIndicator className="mr2" equationOnPageLoad={equationOnPageLoad} equation={equation}/>}
+           <button
+            className="clickable sans"
             onClick={() => {
               this.setState({
                 isEditing: !isEditing,
@@ -64,11 +96,7 @@ class EmbedContainer extends Component {
           >
             {isEditing ? 'Done' : 'Edit'}
           </button>
-          <CopyButton
-            className="clickable sans"
-            copyableText={getEmbedSnippet(equation)}>
-            Copy Embed
-          </CopyButton>
+          </div>
         </div>
         <div className="flex flex-auto flex-column">
           <Editor
@@ -82,7 +110,7 @@ class EmbedContainer extends Component {
           />
           <div className={cx('flex-auto relative')}>
             <KatexRenderer
-              className="abs-center f3"
+              className="abs-center f3 w-100 tc"
               text={equation}
             />
           </div>

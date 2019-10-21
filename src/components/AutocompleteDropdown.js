@@ -81,11 +81,13 @@ const LIST_ITEM_HEIGHT = 30
 const SCROLL_VIEWPORT_HEIGHT = 300;
 
 class AutocompleteDropdown extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
+		const DROPDOWN_BOTTOM_MARGIN = 10
     this.state = {
       scrollTop: 0,
-      selectedIndex: null
+      selectedIndex: null,
+			dropdownHeight: Math.min(300, window.innerHeight - this.props.y - DROPDOWN_BOTTOM_MARGIN),
     }
   }
 
@@ -183,14 +185,15 @@ class AutocompleteDropdown extends Component {
 
   render() {
     const { x, y, onSelect, search } = this.props
-    const { scrollTop, selectedIndex } = this.state
+    const { scrollTop, selectedIndex, dropdownHeight } = this.state
+
     const filteredCommands = this.filterCommands()
     const [paginationStartInd, paginationEndInd] = this.paginationIndices(filteredCommands)
 
     return (
       <div
         className="autocomplete-dropdown absolute f7"
-        style={`left: ${x}px; top: ${y}px;`}
+        style={`left: ${x}px; top: ${y}px; height: ${dropdownHeight}px;`}
         ref={(el) => this._scrollContainer = el}
         onScroll={(e) => {
           this.setScrollTop(e.target.scrollTop)

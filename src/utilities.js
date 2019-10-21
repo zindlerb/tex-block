@@ -12,6 +12,15 @@ export const getEmbedSnippet = (equation) => {
   return `<iframe title="Tex Block" width="600" height="600" frameBorder="0" src="${window.location.href}"></iframe>`
 }
 
+export const getCopySnippet = () => {
+  return window.location.href
+}
+
+export const getBrowserUrl = () => {
+   // Copied from https://stackoverflow.com/questions/3420004/access-parent-url-from-iframe
+  return (window.location != window.parent.location) ? document.referrer : document.location.href;
+}
+
 export const getTextWidth = (text, fontSize, fontFamily) => {
   // Copied from https://stackoverflow.com/questions/118241/calculate-text-width-with-javascript
   // re-use canvas object for better performance

@@ -13,10 +13,11 @@ import './Editor.scss'
 class Editor extends Component {
   constructor() {
     super()
+
     this.state = {
       dropdownPosition: null,
       dropdownCommandStart: null,
-      dropdownSelectedIndex: null
+      dropdownSelectedIndex: null,
     }
   }
 
